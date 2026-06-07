@@ -27,6 +27,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     node_count     = var.node_count
     vm_size        = var.vm_size
     vnet_subnet_id = var.subnet_id
+    os_disk_size_gb = var.os_disk_size_gb
   }
 
   network_profile {

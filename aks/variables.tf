@@ -62,3 +62,14 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "os_disk_size_gb" {
+  description = "OS disk size for nodes. Default 32 (P4, ~5 USD/month) instead of the AKS default 128 (P10, ~20 USD/month); ephemeral nodes need no more."
+  type        = number
+  default     = 32
+
+  validation {
+    condition     = var.os_disk_size_gb >= 30 && var.os_disk_size_gb <= 1024
+    error_message = "os_disk_size_gb must be between 30 and 1024."
+  }
+}
